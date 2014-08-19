@@ -23,14 +23,19 @@
 
 # deal with some platform specific stuff 
 # - start of getting rhel/centos & fedora working
+log "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
 case node['platform_family']
 when "debian"
   if node['platform'] == "ubuntu" && node['platform_version'].to_f < 10.10
+    log "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
     package "git-core"
+    package "libmysqld-dev"
   else
+    log "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
     package "git"
   end
 when "rhel","fedora"
+  log "dddddddddddddddddddddddddddddddddddddddd"
   case node['platform_version'].to_i
   when 5
     include_recipe "yum::epel"
@@ -46,7 +51,6 @@ when "mysql"
   # bundle install fails unless the mysql c libraries are available
   include_recipe "mysql::ruby"
 when "sqlite"
-
   case node['platform_family']
   when "debian"
     package "g++"
