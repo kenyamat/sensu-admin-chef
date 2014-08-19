@@ -10,9 +10,3 @@ recipe            "sensu-admin", "installs nginx and sensu-admin"
 %w{ ubuntu }.each do |os|
   supports os
 end
-
-#https://github.com/sensu/sensu-admin-chef/pull/11/files
-%w{ mysql-chef_gem }.each do |cb| 
-  depends cb
-end
-
